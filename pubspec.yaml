@@ -22,6 +22,7 @@ dependencies:
 
   todos_repository:
     path: packages/todos_repository
+    version: 1.0.0+1
 
   flutter_gen: any
 dev_dependencies:
