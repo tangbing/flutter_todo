@@ -19,6 +19,7 @@ dependencies:
     path: packages/local_storage_todos_api
   todos_api:
     path: packages/todos_api
+    version: 1.0.0+1
 
   todos_repository:
     path: packages/todos_repository
