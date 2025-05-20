@@ -1,6 +1,7 @@
 
 
 import 'package:equatable/equatable.dart';
+import 'package:flutter_todos/todos_overview/models/todos_view_filter.dart';
 import 'package:todos_api/todos_api.dart';
 
 sealed class TodosOverviewEvent extends Equatable {
