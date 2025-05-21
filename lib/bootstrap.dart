@@ -6,6 +6,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_todos/app/app.dart';
 import 'package:todos_api/todos_api.dart';
+import 'package:todos_repository/todos_repository.dart';
 
 class AppBlocObserver extends BlocObserver {
   const AppBlocObserver();
@@ -30,11 +31,12 @@ Future<void> bootstrap({required TodosApi todosApi}) async {
 
   PlatformDispatcher.instance.onError = (error, stack) {
     log(error.toString(), stackTrace: stack);
+    return true;
   };
 
   Bloc.observer = const AppBlocObserver();
 
   // Add cross-flavor configuration here
 
-  runApp(App());
+  runApp(App(createTodosRepository: () => TodosRepository(todosApi: todosApi)));
 }

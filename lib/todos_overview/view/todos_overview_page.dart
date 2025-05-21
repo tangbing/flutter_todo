@@ -2,9 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos/l10n/l10n.dart';
-import 'package:flutter_todos/todos_overview/bloc/todos_overview_bloc.dart';
-import 'package:flutter_todos/todos_overview/bloc/todos_overview_event.dart';
-import 'package:flutter_todos/todos_overview/bloc/todos_overview_state.dart';
+import 'package:flutter_todos/todos_overview/todo_overview.dart';
 import 'package:todos_repository/todos_repository.dart';
 
 class TodosOverviewPage extends StatelessWidget {
@@ -33,10 +31,10 @@ class TodosOverviewView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
           title: Text(l10n.todosOverviewAppBarTitle),
-          actions: [
+          actions: const [
             TodosOverviewFilterButton(),
             TodosOverviewFilterButton(),
-          ], ,
+          ],
       ),
       body: MultiBlocListener(
         listeners: [
@@ -101,7 +99,7 @@ class TodosOverviewView extends StatelessWidget {
                   itemCount: state.filteredTodos.length,
                   itemBuilder: (context, index) {
                      final todo = state.filteredTodos.elementAt(index);
-                     return TodoList
+                     return TodoListTitle(todo: todo);
                   }),
             );
 

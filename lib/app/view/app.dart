@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todos/counter/counter.dart';
+import 'package:flutter_todos/home/view/home_page.dart';
 import 'package:flutter_todos/l10n/l10n.dart';
 import 'package:flutter_todos/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';

@@ -1,6 +1,6 @@
 
 
-part of 'Home_cubit.dart';
+part of 'home_cubit.dart';
 
 
 enum HomeTab {todos, stats}

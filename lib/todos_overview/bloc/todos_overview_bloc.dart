@@ -1,13 +1,17 @@
 
 
 import 'package:bloc/bloc.dart';
-import 'package:flutter_todos/todos_overview/bloc/todos_overview_event.dart';
-import 'package:flutter_todos/todos_overview/bloc/todos_overview_state.dart';
+import 'package:equatable/equatable.dart';
+import 'package:flutter_todos/todos_overview/models/todos_view_filter.dart';
 import 'package:todos_repository/todos_repository.dart';
+
+part 'todos_overview_event.dart';
+part 'todos_overview_state.dart';
 
 class TodosOverViewBloc extends Bloc<TodosOverviewEvent, TodosOverviewState> {
 
-  TodosOverViewBloc({required TodosRepository todosRepository}) : _todosRepository = todosRepository,
+  TodosOverViewBloc({required TodosRepository todosRepository})
+      : _todosRepository= todosRepository,
   super(const TodosOverviewState()) {
     on<TodosOverviewSubscriptionRequested>(_onSubscriptionRequested);
     on<TodosOverviewTodoCompletionToggled>(_onTodoCompletionToggled);
@@ -59,16 +63,19 @@ class TodosOverViewBloc extends Bloc<TodosOverviewEvent, TodosOverviewState> {
     await _todosRepository.saveTodo(todo);
   }
 
-  void _onFilterChanged(TodosOverviewFilterChanged event ,Emitter<TodosOverviewState> emit) {
+  void _onFilterChanged(TodosOverviewFilterChanged event ,
+      Emitter<TodosOverviewState> emit) {
       emit(state.copyWith(filter: () => event.filter));
   }
 
-  Future<void> _onToggleAllRequested(TodosOverviewToggleAllRequested event ,Emitter<TodosOverviewState> emit) async {
+  Future<void> _onToggleAllRequested(TodosOverviewToggleAllRequested event,
+      Emitter<TodosOverviewState> emit) async {
       final areAllCompleted = state.todos.every((element) => element.isCompleted);
       await _todosRepository.clearCompleteAll(isCompleted: !areAllCompleted);
   }
 
-  Future<void> _onClearCompletedRequested(TodosOverViewClearCompletedRequested event ,Emitter<TodosOverviewState> emit) async {
+  Future<void> _onClearCompletedRequested(TodosOverViewClearCompletedRequested event,
+      Emitter<TodosOverviewState> emit) async {
       await _todosRepository.clearCompleted();
   }
 

@@ -1,7 +1,7 @@
 
 import 'package:todos_api/todos_api.dart';
 
-enum TodosViewFilter { all, activeOnly, completeOnly}
+enum TodosViewFilter { all, activeOnly, completeOnly }
 
 extension TodosViewFilterX on TodosViewFilter {
   bool apply(Todo todo) {

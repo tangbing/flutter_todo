@@ -1,8 +1,6 @@
 
+part of 'todos_overview_bloc.dart';
 
-import 'package:equatable/equatable.dart';
-import 'package:flutter_todos/todos_overview/models/todos_view_filter.dart';
-import 'package:todos_api/todos_api.dart';
 
 sealed class TodosOverviewEvent extends Equatable {
   const TodosOverviewEvent();
@@ -47,7 +45,7 @@ final class TodosOverviewUndoDeletionRequested extends TodosOverviewEvent {
 }
 /// 这将以TodosViewFilter作为参数并通过应用过滤器来改变视图
 class TodosOverviewFilterChanged extends TodosOverviewEvent {
-  const TodosOverviewFilterChanged({this.filter});
+  const TodosOverviewFilterChanged({required this.filter});
 
   final TodosViewFilter filter;
 
