@@ -1,7 +1,137 @@
 {
-    "@@locale": "es",
-    "counterAppBarTitle": "Contador",
-    "@counterAppBarTitle": {
-        "description": "Texto mostrado en la AppBar de la página del contador"
+  "@@locale": "es",
+  "todosOverviewAppBarTitle": "Tareas de Flutter",
+  "@todosOverviewAppBarTitle": {
+    "description": "Texto del título mostrado en la barra de aplicaciones de la página de resumen de tareas"
+  },
+
+  "todosOverviewFilterTooltip": "Filtrar",
+  "@todosOverviewFilterTooltip": {
+    "description": "Texto de ayuda para el menú desplegable de filtros en la página de resumen de tareas"
+  },
+
+  "todosOverviewFilterAll": "Todas",
+  "@todosOverviewFilterAll": {
+    "description": "Opción para mostrar todas las tareas en el filtro"
+  },
+
+  "todosOverviewFilterActiveOnly": "Solo activas",
+  "@todosOverviewFilterActiveOnly": {
+    "description": "Opción para mostrar solo tareas activas en el filtro"
+  },
+
+  "todosOverviewFilterCompletedOnly": "Solo completadas",
+  "@todosOverviewFilterCompletedOnly": {
+    "description": "Opción para mostrar solo tareas completadas en el filtro"
+  },
+
+  "todosOverviewMarkAllCompleteButtonText": "Marcar todas como completadas",
+  "@todosOverviewMarkAllCompleteButtonText": {
+    "description": "Botón para marcar todas las tareas como completadas"
+  },
+
+  "todosOverviewClearCompletedButtonText": "Limpiar completadas",
+  "@todosOverviewClearCompletedButtonText": {
+    "description": "Botón para eliminar tareas completadas"
+  },
+
+  "todosOverviewEmptyText": "No se encontraron tareas con los filtros seleccionados.",
+  "@todosOverviewEmptyText": {
+    "description": "Texto mostrado cuando no hay tareas con los filtros actuales"
+  },
+
+  "todosOverviewTodoDeletedSnackbarText": "Tarea \"{todoTitle}\" eliminada.",
+  "@todosOverviewTodoDeletedSnackbarText": {
+    "description": "Notificación al eliminar una tarea",
+    "placeholders": {
+      "todoTitle": {
+        "description": "Título de la tarea eliminada"
+      }
     }
+  },
+
+  "todosOverviewUndoDeletionButtonText": "Deshacer",
+  "@todosOverviewUndoDeletionButtonText": {
+    "description": "Botón para deshacer la eliminación de tarea"
+  },
+
+  "todosOverviewErrorSnackbarText": "Ocurrió un error al cargar las tareas.",
+  "@todosOverviewErrorSnackbarText": {
+    "description": "Notificación de error de carga"
+  },
+
+  "todosOverviewOptionsTooltip": "Opciones",
+  "@todosOverviewOptionsTooltip": {
+    "description": "Texto de ayuda para el menú de opciones"
+  },
+
+  "todosOverviewOptionsMarkAllComplete": "Marcar todas como completadas",
+  "@todosOverviewOptionsMarkAllComplete": {
+    "description": "Opción para marcar todas las tareas como completadas"
+  },
+
+  "todosOverviewOptionsMarkAllIncomplete": "Marcar todas como incompletas",
+  "@todosOverviewOptionsMarkAllIncomplete": {
+    "description": "Opción para marcar todas las tareas como incompletas"
+  },
+
+  "todosOverviewOptionsClearCompleted": "Limpiar completadas",
+  "@todosOverviewOptionsClearCompleted": {
+    "description": "Opción para eliminar tareas completadas"
+  },
+
+  "todoDetailsAppBarTitle": "Detalles de la tarea",
+  "@todoDetailsAppBarTitle": {
+    "description": "Título en la barra de aplicaciones de la página de detalles"
+  },
+
+  "todoDetailsDeleteButtonTooltip": "Eliminar",
+  "@todoDetailsDeleteButtonTooltip": {
+    "description": "Botón para eliminar una tarea"
+  },
+
+  "todoDetailsEditButtonTooltip": "Editar",
+  "@todoDetailsEditButtonTooltip": {
+    "description": "Botón para editar una tarea"
+  },
+
+  "editTodoEditAppBarTitle": "Editar tarea",
+  "@editTodoEditAppBarTitle": {
+    "description": "Título al editar una tarea existente"
+  },
+
+  "editTodoAddAppBarTitle": "Agregar tarea",
+  "@editTodoAddAppBarTitle": {
+    "description": "Título al crear una nueva tarea"
+  },
+
+  "editTodoTitleLabel": "Título",
+  "@editTodoTitleLabel": {
+    "description": "Etiqueta del campo de título"
+  },
+
+  "editTodoDescriptionLabel": "Descripción",
+  "@editTodoDescriptionLabel": {
+    "description": "Etiqueta del campo de descripción"
+  },
+
+  "editTodoSaveButtonTooltip": "Guardar cambios",
+  "@editTodoSaveButtonTooltip": {
+    "description": "Botón para guardar modificaciones"
+  },
+
+  "statsAppBarTitle": "Estadísticas",
+  "@statsAppBarTitle": {
+    "description": "Título de la página de estadísticas"
+  },
+
+  "statsCompletedTodoCountLabel": "Tareas completadas",
+  "@statsCompletedTodoCountLabel": {
+    "description": "Etiqueta de contador de tareas completadas"
+  },
+
+  "statsActiveTodoCountLabel": "Tareas activas",
+  "@statsActiveTodoCountLabel": {
+    "description": "Etiqueta de contador de tareas activas"
+  }
 }

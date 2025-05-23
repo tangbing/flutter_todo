@@ -33,7 +33,7 @@ class TodosOverviewView extends StatelessWidget {
           title: Text(l10n.todosOverviewAppBarTitle),
           actions: const [
             TodosOverviewFilterButton(),
-            TodosOverviewFilterButton(),
+            TodosOverviewOptionsButton(),
           ],
       ),
       body: MultiBlocListener(

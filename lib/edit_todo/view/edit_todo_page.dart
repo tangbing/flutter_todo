@@ -11,7 +11,6 @@ import 'package:todos_repository/todos_repository.dart';
 class EditTodoPage extends StatelessWidget {
   const EditTodoPage({super.key});
 
-
   static Route<void> route({Todo? initialTodo}) {
     return MaterialPageRoute(
         builder: (context) {
@@ -20,7 +19,7 @@ class EditTodoPage extends StatelessWidget {
                 todoRepository: context.read<TodosRepository>(),
                 initialTodo: initialTodo
             ),
-            child: EditTodoPage(),
+            child: const EditTodoPage(),
           );
         });
   }
@@ -53,27 +52,29 @@ class EditTodoView extends StatelessWidget {
               ? l10n.editTodoAddAppBarTitle
               : l10n.editTodoEditAppBarTitle,),
       ),
-      floatingActionButton: FloatingActionButton(
-          tooltip: l10n.editTodoSaveButtonTooltip,
-          shape: const ContinuousRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(32)),
-          ),
-          onPressed: status.isLoadingOrSuccess ? null :
-              () => context.read<EditTodoBloc>().add(const EditTodoSubmitted()),
-          child: status.isLoadingOrSuccess
-              ? const CupertinoActivityIndicator()
-              : const Icon(Icons.check_rounded),
-      ),
       body: const CupertinoScrollbar(
-          child: SingleChildScrollView(
-            child: Padding(
-                padding: EdgeInsets.all(16),
-                child: Column(
-                  children: [_TitleField(), _DescriptionField()],
-                ),
-            ),
-          )
+        child: SingleChildScrollView(
+          child: Padding(
+              padding: EdgeInsets.all(16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [_TitleField(), _DescriptionField()],
+              ),
+          ),
+        ),
       ),
+      floatingActionButton: FloatingActionButton(
+        tooltip: l10n.editTodoSaveButtonTooltip,
+        shape: const ContinuousRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(32)),
+        ),
+        onPressed: status.isLoadingOrSuccess ? null :
+            () => context.read<EditTodoBloc>().add(const EditTodoSubmitted()),
+        child: status.isLoadingOrSuccess
+            ? const CupertinoActivityIndicator()
+            : const Icon(Icons.check_rounded),
+      ),
+
     );
   }
 }
@@ -96,7 +97,7 @@ class _TitleField extends StatelessWidget {
         labelText: l10n.editTodoTitleLabel,
         hintText: hintText,
       ),
-      maxLines: 50,
+      maxLength: 50,
       inputFormatters: [
         LengthLimitingTextInputFormatter(50),
         FilteringTextInputFormatter.allow(RegExp(r'[a-zA-Z0-9\s]')),

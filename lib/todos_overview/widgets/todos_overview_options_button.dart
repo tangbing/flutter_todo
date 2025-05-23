@@ -5,43 +5,57 @@ import 'package:flutter_todos/l10n/l10n.dart';
 import 'package:flutter_todos/todos_overview/bloc/todos_overview_bloc.dart';
 import 'package:flutter_todos/todos_overview/models/models.dart';
 
+
+@visibleForTesting
+enum TodosOverViewOption { toggleAll, clearCompleted }
+
 class TodosOverviewOptionsButton extends StatelessWidget {
   const TodosOverviewOptionsButton({super.key});
 
   @override
   Widget build(BuildContext context) {
     final l10n = context.l10n;
+    final todos = context.select((TodosOverViewBloc bloc) => bloc.state.todos);
+    final hasTodos = todos.isNotEmpty;
+    final completedTodosAmount = todos.where((todo) => todo.isCompleted).length;
 
-    final activeFilter = context.select((TodosOverViewBloc bloc) => bloc.state.filter);
 
-    return PopupMenuButton<TodosViewFilter>(
+    return PopupMenuButton<TodosOverViewOption>(
         shape: const ContinuousRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(16))
         ),
-        initialValue: activeFilter,
-        tooltip: l10n.todosOverviewFilterTooltip,
-        onSelected: (filter) {
-          context.read<TodosOverViewBloc>().add(TodosOverviewFilterChanged(filter: filter));
+        tooltip: l10n.todosOverviewOptionsTooltip,
+        onSelected: (options) {
+
+          switch (options) {
+            case TodosOverViewOption.toggleAll:
+              context.read<TodosOverViewBloc>().add(
+                  const TodosOverviewToggleAllRequested());
+            case TodosOverViewOption.clearCompleted:
+              context.read<TodosOverViewBloc>().add(
+                  const TodosOverViewClearCompletedRequested());
+          }
         },
         itemBuilder: (context) {
            return [
              PopupMenuItem(
-               value: TodosViewFilter.all,
-               child: Text(l10n.todosOverviewFilterAll),
+               value: TodosOverViewOption.toggleAll,
+               enabled: hasTodos,
+               child: Text(completedTodosAmount == todos.length
+                   ? l10n.todosOverviewOptionsMarkAllIncomplete
+                   : l10n.todosOverviewOptionsMarkAllComplete
+               ),
              ),
 
              PopupMenuItem(
-               value: TodosViewFilter.activeOnly,
-               child: Text(l10n.todosOverviewFilterActiveOnly),
+               value: TodosOverViewOption.clearCompleted,
+               enabled: hasTodos && completedTodosAmount > 0,
+               child: Text(l10n.todosOverviewOptionsClearCompleted),
              ),
 
-             PopupMenuItem(
-               value: TodosViewFilter.completeOnly,
-               child: Text(l10n.todosOverviewFilterCompletedOnly),
-             ),
            ];
         },
-      icon: const Icon(Icons.filter_list_rounded),
+      icon: const Icon(Icons.more_vert_rounded),
     );
   }
 }

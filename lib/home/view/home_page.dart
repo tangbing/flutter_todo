@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_todos/edit_todo/view/edit_todo_page.dart';
 import 'package:flutter_todos/home/cubit/home_cubit.dart';
 import 'package:flutter_todos/stats/view/stats_page.dart';
 import 'package:flutter_todos/todos_overview/view/todos_overview_page.dart';
@@ -22,12 +23,19 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
+    
+    print('select: ${selectedTab.index}');
 
     return Scaffold(
       body: IndexedStack(
         index: selectedTab.index,
         children: const [TodosOverviewPage(), StatsPage()],
       ),
+      floatingActionButton: FloatingActionButton(
+          key: const Key('homeView_addTodo_floatingActionButton'),
+          shape: const CircleBorder(),
+          child: const Icon(Icons.add),
+          onPressed: () => Navigator.of(context).push(EditTodoPage.route())),
       bottomNavigationBar: BottomAppBar(
         shape: const CircularNotchedRectangle(),
         child: Row(
