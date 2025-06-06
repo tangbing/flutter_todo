@@ -22,6 +22,11 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// 用于监听 provider 中的数据，并且只对指定字段的变化做出响应，减少不必要的 widget 重建。
+    /// 只能在 widget 的 build 方法中调用，不能在其他生命周期方法（如 didChangeDependencies）中用。
+    /// 通过传入 selector（选择器），只监听你关心的那部分数据。
+    /// 如果 selector 的返回值和上一次不同，widget 会重新构建；否则不会重建。
+    /// 可以多次调用 select 监听多个字段。
     final selectedTab = context.select((HomeCubit cubit) => cubit.state.tab);
     
     print('select: ${selectedTab.index}');

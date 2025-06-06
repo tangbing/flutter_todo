@@ -29,6 +29,7 @@ final class TodosOverviewTodoCompletionToggled extends TodosOverviewEvent {
   List<Object> get props => [todo, isCompleted];
 
 }
+
 /// 这将删除待办事项
 final class TodosOverviewTodoDeleted extends TodosOverviewEvent {
   const TodosOverviewTodoDeleted({
@@ -39,6 +40,7 @@ final class TodosOverviewTodoDeleted extends TodosOverviewEvent {
   @override
   List<Object> get props => [todo];
 }
+
 /// 这将撤消待办事项删除，例如意外删除
 final class TodosOverviewUndoDeletionRequested extends TodosOverviewEvent {
   const TodosOverviewUndoDeletionRequested();
